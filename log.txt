@@ -1,0 +1,11 @@
+commit 330fcda25f8a894d6f12d06774c3d97b19a9144b (HEAD -> master)
+Author: Anna Zaretskaya <annzar99@mail.ru>
+Date:   Thu Feb 8 23:05:26 2018 +0300
+
+    add status.txt
+
+commit fa61cc3d0bc17c7343c00f512e206c30ae0ce115
+Author: Anna Zaretskaya <annzar99@mail.ru>
+Date:   Thu Feb 8 23:03:37 2018 +0300
+
+    add .gitignore
