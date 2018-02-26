@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Suez+One');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    background-color: #f6f6f6;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: all .6s ease;
+    -ms-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -webkit-transition: all .6s ease;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+    transition: all .6s ease;
+    -ms-transition: all .6s ease;
+    -o-transition: all .6s ease;
+    -moz-transition: all .6s ease;
+    -webkit-transition: all .6s ease;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto \9;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -webkit-transition: all .3s ease-out;
+}
+
+header {
+    float: left;
+    background-color: #343434;
+    width: 99.4%;
+    padding: 0.3%;
+    border-bottom: 5px solid #59595a;
+}
+
+header > div#logo > span {
+    font-size: 2.5em;
+    margin-left: 10px;
+    font-family: 'Suez One', serif;
+    color: white;
+
+}
+
+.logo_hub {
+    background-color: rgba(236, 101, 80, 1);
+    border-radius: 5px;
+    color: black;
+}
+
+@media (min-width: 950px) {
+    #logo {
+        float: left;
+        width: 30%;
+    }
+
+    #about {
+        float: left;
+        width: 37%;
+    }
+
+    #red_auth {
+        float: right;
+        width: 30%;
+    }
+}
+
+@media (max-width: 949px) { 
+    #logo {
+        width: 30%;
+    }
+
+    #about {
+        widows: 30%;
+    }
+
+    #red_auth {
+        widows: 30%;
+    }
+
+    #UserAvatar{
+        width: 100%;
+        float: left;
+    }
+
+    #Avatar{
+        width: 250%;
+        float: left;
+        margin-left: -20%; 
+    }
+
+    #MainPart{
+        width:180%;
+        float: left;
+        margin-left:-70% ;
+
+    }
+    #Search{
+        width: 400%;
+        margin-left:80% ;
+        margin-top: -85%; 
+        float: left;
+    }
+     #MyPageTitle{
+        visibility: hidden;
+        display: none;
+    } 
+
+    #Add{
+        width: 100%;
+        float: left;
+        margin-left: -15%; 
+        margin-top: -7%; 
+    }
+    #MyPage{
+        width: 110%;
+    }
+}
+
+#about {
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4em;
+    padding-top: 10px;
+}
+
+#about > a {
+    color: white;
+}
+
+#about > a:hover {
+    color: #dfdfdf;
+    border-bottom: 1px solid silver;
+}
+
+#about > a:last-child {
+    margin-left: 10%;
+}
+
+#reg_auth {
+    color: white;
+}
+
+#reg_auth > a > div.btn {
+    float: right;
+    margin-right: 3%;
+    margin-top: 1%;
+    border-radius:1%;
+    padding: 1% 9px;
+    font-size: 1.2em;
+    background-color: rgba(236, 101, 80, 1);
+    text-shadow: #454545 0 0 1%;
+    border-bottom: 1% solid rgba(217, 91, 72, 1);
+    font-family: 'Roboto Slab', serif;
+}
+
+#reg_auth > a:hover > div.btn {
+    margin-top: 7px;
+    border-bottom: 1% solid rgba(217, 91, 72, 1);
+}
+
+#reg_auth > a:active > div.btn {
+    margin-top: 9px;
+    border-bottom: 0;
+}
+
+#TopUser{
+    margin-left: 50%;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.4em;
+    padding-top: 10px;
+}
+
+#TopUser > a {
+    color: white;
+}
+
+#TopUser > a:hover {
+    color: #dfdfdf;
+    border-bottom: 1% solid silver;
+}
+
+UserAvatar{
+    background-color: #59595a;
+    width: 15%;
+    padding: 0.3%;
+    margin-left: 20%;
+    margin-top: 3%;
+    float: left;
+    border: 1% solid silver;
+    border-radius: 5%;
+}
+
+Filter{
+    background-color: #59595a;
+    width: 15%;
+    padding: 0.3%;
+    margin-left: -16%;
+    margin-top: 23%;
+    float: left;
+    border: 1% solid silver;
+    border-radius: 5%;
+}
+Filter>a>div.btn{
+    float: right;
+    margin-right: 3%;
+    margin-top:  1%;
+    border-radius:  1%;
+    padding: 1%  2%;
+    font-size: 1.2em;
+    background-color: rgba(236, 101, 80, 1);
+    text-shadow: #454545 0 0  1%;
+    border-bottom:  1% solid rgba(217, 91, 72, 1);
+    font-family: 'Roboto Slab', serif;
+}
+
+Filter>a:hover>div.btn{
+    margin-top:  2%;
+    border-bottom:  1% solid rgba(217, 91, 72, 1);
+}
+
+Filter>a:active>div.btn{
+    margin-top:  2%;
+    border-bottom: 0;
+}
+
+.filter{
+    float: left;
+    font-family: 'Roboto Slab', serif;
+    margin-top: 5%;
+    padding-left: 30%;
+    padding-bottom: 3%;
+    color:rgba(236, 101, 80, 1);
+    font-size: x-large;
+    margin-right: 10%;
+
+}
+
+.inputsearch{
+    margin-bottom: 2%;
+    margin-left: 15%;
+    margin-top: 1%;
+
+}
+
+.pic{
+    width: 70%;
+    float: right;
+    margin-top: -3%;
+    margin-bottom: -7%;
+    padding-left: 1%;
+    padding-right: 5%;
+}
+
+.ava{
+    width: 13%;
+    float: left;
+    padding-left: 2%;
+    padding-right: 5%;
+}
+.red{
+
+    width: 12%;
+    float: left;
+    padding-top: 5%;
+    padding-left: 3%;
+    padding-right: 5%;
+
+}
+.like{
+
+    width: 12%;
+    float: left;
+    padding-top: 5%;
+    padding-left: 3%;
+    padding-right: 5%;
+
+}
+
+PhotoPost{
+    float: right;
+    background-color: #59595a;
+    width: 45%;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-bottom: 2%;
+    margin-right: 13%;
+    margin-top: 3%;
+    border:  1% solid silver;
+    border-radius: 5%;
+    margin-bottom: 1%;
+}
+
+#user_name{
+    font-family: 'Roboto Slab', serif;
+    padding-left: 30%;
+}
+#user_name:hover{
+    color: silver;
+}
+
+.user_name1{
+    font-family: 'Roboto Slab', serif;
+    padding-left: 1%;
+    float: left;
+    font-size: x-large;
+    margin-top: 5%;
+
+}
+.user_name1:hover{
+    color: silver;
+}
+
+.fixed{
+    position: fixed;
+    top: 0;
+    opacity: 0.97;
+}
+
+#MyPage{
+    margin-top: 9.5%;
+    margin-left: 5%;
+}
+
+#Add > a > div.btn {
+    margin-top: 0.5%;
+    margin-right: 21%;
+    margin-left: 60%;
+    border-radius: 3px;
+    padding: 3px 3px;
+    padding-left: 2.7%;
+    font-size: 1.5em;
+    background-color: rgba(236, 101, 80, 1);
+    text-shadow: #454545 0 0 2px;
+    border-bottom: 3px solid rgba(217, 91, 72, 1);
+    font-family: 'Roboto Slab', serif;
+}
+
+#Add > a:hover > div.btn {
+    margin-top: 7px;
+    border-bottom: 2px solid rgba(217, 91, 72, 1);
+}
+
+#Add > a:active > div.btn {
+    margin-top: 9px;
+    border-bottom: 0;
+}
+
+.Data_and_time{
+    float: right;
+    font-family: 'Roboto Slab', serif;
+    margin-top: 5%;
+    color: white;
+    font-size: x-large;
+    margin-right: 10%;
+}
+
+.HashTeg{
+    float: left;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+    font-size: x-large;
+}
+
+.Description{
+    float: left;
+    font-family: 'Roboto Slab', serif;
+    color: white;
+    font-size: x-large;
+    margin-right: 5%;
+    margin-left: 1%;
+}
+
+#MyPageTitle{
+    font-family: 'Roboto Slab', serif;
+    font-size: 180%;
+    float: left;
+    margin-left: 8%;
+    font-weight: bold;
+}
+#DownloadButton>a>div.btn{
+    float: left;
+    margin-top: 0.5%;
+    margin-right: 10%;
+    margin-left: 70%;
+    margin-bottom: 0.5%;
+    border-radius:  1%;
+    padding-left: 2.7%;
+    padding-right: 2.7%;
+    font-size: 1.5em;
+    background-color: rgba(236, 101, 80, 1);
+    text-shadow: #454545 0 0  1%;
+    border-bottom:  1% solid rgba(217, 91, 72, 1);
+    font-family: 'Roboto Slab', serif;
+}
+#DownloadButton>div.btn:hover{
+    margin-top:  2%;;
+    border-bottom:  1% solid rgba(217, 91, 72, 1);
+}
+#DownloadButton>div.btn:active{
+    margin-top:  2%;
+    border-bottom: 0;
+}
+
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#content {
+    flex: 1 0 auto;
+}
+
+footer {
+    float: left;
+    background-color: #343434;
+    width: 98%;
+    padding: 1%;
+    border-top: 5px solid #59595a;
+    font-family: 'Roboto Slab', serif;
+}
+
+#site_name {
+    margin-right: 5%;
+    float: right;
+    font-size: 1.5em;
+}
+
+#site_name > span {
+    font-family: 'Suez One', serif;
+    color: white;
+}
+
+@media (max-width: 1080px) {
+    #clear {
+        clear: both;
+    }
+}
+
+#footer_menu {
+    font-size: 1.2em;
+    font-family: 'Roboto Slab', serif;
+}
+
+#footer_menu>a {
+    margin-left: 2%;
+    color: #f4f4f4;
+}
+
+#footer_menu>a:hover{
+    border-bottom: 1px solid silver;
+    color: #aeaeae;
+}
