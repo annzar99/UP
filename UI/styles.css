@@ -96,29 +96,20 @@ header > div#logo > span {
         widows: 30%;
     }
 
-    #UserAvatar{
-        width: 100%;
-        float: left;
-    }
-
-    #Avatar{
-        width: 250%;
-        float: left;
-        margin-left: -20%; 
-    }
-
     #MainPart{
         width:180%;
         float: left;
         margin-left:-70% ;
 
     }
-    #Search{
+
+    #UserAvatar{
         width: 400%;
-        margin-left:80% ;
-        margin-top: -85%; 
         float: left;
+        margin-left: -60%;
     }
+
+
      #MyPageTitle{
         visibility: hidden;
         display: none;
@@ -127,7 +118,7 @@ header > div#logo > span {
     #Add{
         width: 100%;
         float: left;
-        margin-left: -15%; 
+        margin-left: -11%; 
         margin-top: -7%; 
     }
     #MyPage{
@@ -155,12 +146,11 @@ header > div#logo > span {
     margin-left: 10%;
 }
 
-#reg_auth {
-    color: white;
-}
 
-#reg_auth > a > div.btn {
+
+#reg_auth > a {
     float: right;
+    color: white;
     margin-right: 3%;
     margin-top: 1%;
     border-radius:1%;
@@ -172,12 +162,12 @@ header > div#logo > span {
     font-family: 'Roboto Slab', serif;
 }
 
-#reg_auth > a:hover > div.btn {
+#reg_auth > a:hover {
     margin-top: 7px;
     border-bottom: 1% solid rgba(217, 91, 72, 1);
 }
 
-#reg_auth > a:active > div.btn {
+#reg_auth > a:active{
     margin-top: 9px;
     border-bottom: 0;
 }
@@ -199,7 +189,7 @@ header > div#logo > span {
     border-bottom: 1% solid silver;
 }
 
-UserAvatar{
+#Avatar{
     background-color: #59595a;
     width: 15%;
     padding: 0.3%;
@@ -210,7 +200,7 @@ UserAvatar{
     border-radius: 5%;
 }
 
-Filter{
+#Search{
     background-color: #59595a;
     width: 15%;
     padding: 0.3%;
@@ -220,7 +210,8 @@ Filter{
     border: 1% solid silver;
     border-radius: 5%;
 }
-Filter>a>div.btn{
+
+#Search>.btn{
     float: right;
     margin-right: 3%;
     margin-top:  1%;
@@ -233,12 +224,12 @@ Filter>a>div.btn{
     font-family: 'Roboto Slab', serif;
 }
 
-Filter>a:hover>div.btn{
+#Search>.btn:hover{
     margin-top:  2%;
     border-bottom:  1% solid rgba(217, 91, 72, 1);
 }
 
-Filter>a:active>div.btn{
+#Search>.btn:active{
     margin-top:  2%;
     border-bottom: 0;
 }
@@ -257,7 +248,7 @@ Filter>a:active>div.btn{
 
 .inputsearch{
     margin-bottom: 2%;
-    margin-left: 15%;
+    margin-left: 8%;
     margin-top: 1%;
 
 }
@@ -296,7 +287,7 @@ Filter>a:active>div.btn{
 
 }
 
-PhotoPost{
+nav{
     float: right;
     background-color: #59595a;
     width: 45%;
@@ -341,13 +332,13 @@ PhotoPost{
     margin-left: 5%;
 }
 
-#Add > a > div.btn {
+#Add >.btn {
     margin-top: 0.5%;
     margin-right: 21%;
-    margin-left: 60%;
     border-radius: 3px;
     padding: 3px 3px;
-    padding-left: 2.7%;
+    padding-left: 0.7%;
+    float: right;
     font-size: 1.5em;
     background-color: rgba(236, 101, 80, 1);
     text-shadow: #454545 0 0 2px;
@@ -355,12 +346,12 @@ PhotoPost{
     font-family: 'Roboto Slab', serif;
 }
 
-#Add > a:hover > div.btn {
+#Add > .btn:hover {
     margin-top: 7px;
     border-bottom: 2px solid rgba(217, 91, 72, 1);
 }
 
-#Add > a:active > div.btn {
+#Add >.btn:active {
     margin-top: 9px;
     border-bottom: 0;
 }
@@ -397,7 +388,7 @@ PhotoPost{
     margin-left: 8%;
     font-weight: bold;
 }
-#DownloadButton>a>div.btn{
+#DownloadButton>.btn{
     float: left;
     margin-top: 0.5%;
     margin-right: 10%;
@@ -412,11 +403,11 @@ PhotoPost{
     border-bottom:  1% solid rgba(217, 91, 72, 1);
     font-family: 'Roboto Slab', serif;
 }
-#DownloadButton>div.btn:hover{
+#DownloadButton>.btn:hover{
     margin-top:  2%;;
     border-bottom:  1% solid rgba(217, 91, 72, 1);
 }
-#DownloadButton>div.btn:active{
+#DownloadButton>.btn:active{
     margin-top:  2%;
     border-bottom: 0;
 }
