@@ -196,7 +196,18 @@
         return 0;
     }
     function validatePhotoPost(object) {
-        if (object.hasOwnProperty('id') == false) {
+        if(typeof object.id !== 'string' || typeof object.description !== 'string'  || typeof object.photoLink !== 'string'){
+            return false;
+        }
+        if (object.createdAt instanceof Date){
+            return false;
+        }
+        for(var i in object.hashtags){
+            if(typeof object.hashtags[i] !== 'string'){
+                return false;
+            }
+        }
+        if (!object.hasOwnProperty('id')) {
             console.log("error1");
             return false;
         }
@@ -205,7 +216,7 @@
                 return false;
             }
         }
-        if (object.hasOwnProperty('photoLink') == false) {
+        if (!object.hasOwnProperty('photoLink')) {
             console.log("error2");
             return false;
         }
@@ -214,7 +225,7 @@
                 return false;
             }
         }
-        if (object.hasOwnProperty('author') == false) {
+        if (!object.hasOwnProperty('author')) {
             console.log("error3");
             return false;
         }
@@ -223,11 +234,11 @@
                 return false;
             }
         }
-        if (object.hasOwnProperty('createdAt') == false) {
+        if (!object.hasOwnProperty('createdAt')) {
             console.log("error4");
             return false;
         }
-        if (object.hasOwnProperty('description') == false) {
+        if (object.hasOwnProperty('description') === false) {
             console.log("error5");
             return false;
         }
@@ -240,12 +251,11 @@
     }
 
     function addPhotoPost(object) {
-        var temp = validatePhotoPost(object);
-        if (temp == true) {
+        if (validatePhotoPost(object) == true) {
             photoPosts.push(object);
             return true;
         }
-        else return false;
+        return false;
     }
 
     function getIndex(id) {
@@ -268,7 +278,7 @@
 
 
     function editPhotoPost(id, object) {
-        if (object == undefined) {
+        if (!object) {
             return false;
         }
         if (id == undefined) {
@@ -320,104 +330,62 @@
     }
 
     function getPhotoPosts(skip, top, filterConfig) {
+        skip = skip || 0;
+        top = top || 10;
         photoPosts.sort(compareDates);
-        var ArrayObject = [];
+        var ArrayObject = photoPosts.slice(0,photoPosts.length);
+        // debugger;
         if (filterConfig == undefined) {
             photoPosts.sort(compareDates);
             ArrayObject = photoPosts.slice(skip, skip + top);
             return ArrayObject;
         }
+
         if (filterConfig.hasOwnProperty('author') == false) {
             if (filterConfig.hasOwnProperty('hashtags') == false) {
                 if (filterConfig.hasOwnProperty('data') == false) {
                     ArrayObject = photoPosts.slice(skip, skip + top);
                     return ArrayObject;
                 }
-                else {
-
-                    for (var i in photoPosts) {
-                        if (photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-                            ArrayObject.push(photoPosts[i]);
-                        }
-                    }
-                }
             }
-            else {
-                if (filterConfig.hasOwnProperty('data') == false) {
-                    for (var i in photoPosts) {
-                        for (var j in photoPosts[i].hashtags) {
-                            if (photoPosts[i].hashtags[j] == filterConfig.hashtags) {
-                                console.log('1234');
-                                ArrayObject.push(photoPosts[i]);
-                            }
-                        }
-                    }
-                }
-                else {
-                    for (var i in photoPosts) {
-                        for (var j in photoPosts[i].hashtags) {
-                            if (photoPosts[i].hashtags[j] == filterConfig.hashtags && photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-                                ArrayObject.push(photoPosts[i]);
-                            }
-                        }
-                    }
+        }
+
+        if (filterConfig.hasOwnProperty('author')) {
+            for (var i = ArrayObject.length - 1; i >= 0; i--) {
+                if (ArrayObject[i].author !== filterConfig.author) {
+                    ArrayObject.splice(i,1);
                 }
             }
         }
-        else {
-            if (filterConfig.hasOwnProperty('data') == false) {
-                if (filterConfig.hasOwnProperty('hashtags') == false) {
-                    for (var i in photoPosts) {
-                        if (photoPosts[i].author === filterConfig.author) {
-                            ArrayObject.push(photoPosts[i]);
-                        }
-                    }
-                }
-                else {
-                    for (var i in photoPosts) {
-                        if (photoPosts[i].author === filterConfig.author) {
-                            for (var j in photoPosts[i].hashtags) {
-                                if (photoPosts[i].hashtags[j] == filterConfig.hashtags)
-                                    ArrayObject.push(photoPosts[i]);
-                            }
-                        }
-                    }
-
+        
+        if (filterConfig.hasOwnProperty('data')) {
+            getPOstsArray(ArrayObject);
+            for (var i = ArrayObject.length - 1; i >= 0; i--) {
+                if (ArrayObject[i].createdAt.getTime() !== filterConfig.data.getTime()) {
+                    ArrayObject.splice(i,1);
                 }
             }
-            else {
-                if (filterConfig.hasOwnProperty('hashtags') == false) {
-                    for (var i in photoPosts) {
-                        if (photoPosts[i].author === filterConfig.author && photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-                            ArrayObject.push(photoPosts[i]);
-                        }
+        }
+        if (filterConfig.hasOwnProperty('hashtags')) {
+            var temp;
+            for (var i = ArrayObject.length - 1; i >= 0; i--) {
+                temp = 0;
+                for (var j in ArrayObject[i].hashtags) {
+                    if (ArrayObject[i].hashtags[j] === filterConfig.hashtags) {
+                        temp = 1;
                     }
                 }
-                else {
-                    for (var i in photoPosts) {
-                        if (photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-
-                            if (photoPosts[i].author === filterConfig.author) {
-                                for (var j in photoPosts[i].hashtags) {
-                                    if (photoPosts[i].hashtags[j] == filterConfig.hashtags)
-                                        ArrayObject.push(photoPosts[i]);
-                                }
-                            }
-                        }
-                    }
+                if(temp == 1){
+                    ArrayObject.splice(i,1); 
                 }
-
             }
 
         }
-
-        if (ArrayObject.lenght <= 10 || (skip + top) > ArrayObject.lenght) {
+        if (ArrayObject.length<= 10 ) {
             return ArrayObject;
         }
-        else {
-            return ArrayObject.slice(skip, skip + top);
-        }
-        return ArrayObject;
+         return ArrayObject.slice(skip, skip + top);
+
     }
 
     console.log(getPhotoPosts(0, 10, { data: new Date('2018-02-23T23:00:00') }));
@@ -445,3 +413,89 @@
     getPhotoPost('1');
 
 })();
+
+
+
+
+
+        // if (filterConfig.hasOwnProperty('author') == false) {
+        //     if (filterConfig.hasOwnProperty('hashtags') == false) {
+        //         if (filterConfig.hasOwnProperty('data') == false) {
+        //             ArrayObject = photoPosts.slice(skip, skip + top);
+        //             return ArrayObject;
+        //         }
+        //         else {
+
+        //             for (var i in photoPosts) {
+        //                 if (photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
+        //                     ArrayObject.push(photoPosts[i]);
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     else {
+        //         if (filterConfig.hasOwnProperty('data') == false) {
+        //             for (var i in photoPosts) {
+        //                 for (var j in photoPosts[i].hashtags) {
+        //                     if (photoPosts[i].hashtags[j] == filterConfig.hashtags) {
+        //                         console.log('1234');
+        //                         ArrayObject.push(photoPosts[i]);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //         else {
+        //             for (var i in photoPosts) {
+        //                 for (var j in photoPosts[i].hashtags) {
+        //                     if (photoPosts[i].hashtags[j] == filterConfig.hashtags && photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
+        //                         ArrayObject.push(photoPosts[i]);
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+        // else {
+        //     if (filterConfig.hasOwnProperty('data') == false) {
+        //         if (filterConfig.hasOwnProperty('hashtags') == false) {
+        //             for (var i in photoPosts) {
+        //                 if (photoPosts[i].author === filterConfig.author) {
+        //                     ArrayObject.push(photoPosts[i]);
+        //                 }
+        //             }
+        //         }
+        //         else {
+        //             for (var i in photoPosts) {
+        //                 if (photoPosts[i].author === filterConfig.author) {
+        //                     for (var j in photoPosts[i].hashtags) {
+        //                         if (photoPosts[i].hashtags[j] == filterConfig.hashtags)
+        //                             ArrayObject.push(photoPosts[i]);
+        //                     }
+        //                 }
+        //             }
+
+        //         }
+        //     }
+        //     else {
+        //         if (filterConfig.hasOwnProperty('hashtags') == false) {
+        //             for (var i in photoPosts) {
+        //                 if (photoPosts[i].author === filterConfig.author && photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
+        //                     ArrayObject.push(photoPosts[i]);
+        //                 }
+        //             }
+        //         }
+        //         else {
+        //             for (var i in photoPosts) {
+        //                 if (photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
+
+        //                     if (photoPosts[i].author === filterConfig.author) {
+        //                         for (var j in photoPosts[i].hashtags) {
+        //                             if (photoPosts[i].hashtags[j] == filterConfig.hashtags)
+        //                                 ArrayObject.push(photoPosts[i]);
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+
+        //     }
