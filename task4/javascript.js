@@ -1,4 +1,4 @@
-(function () {
+var myModule = (function () {
 
     var photoPosts = [
         {
@@ -184,130 +184,127 @@
     ];
 
     function getPhotoPost(temp) {
-        for (var i in photoPosts) {
-            if (photoPosts[i].id == temp) {
-                for (var j in photoPosts[i].hashtags) {
-                    console.log(photoPosts[i].hashtags[j] + ' ')
+        for (var item in photoPosts) {
+            if (photoPosts[item].id == temp) {
+                for (var itemHashtag in photoPosts[item].hashtags) {
+                    console.log(photoPosts[item].hashtags[itemHashtag] + ' ')
                 }
-                console.log(photoPosts[i].id + ' ' + photoPosts[i].author + ' ' + photoPosts[i].createdAt + ' ' + photoPosts[i].description + ' ' + photoPosts[i].photoLink);
-                return photoPosts[i];
+                console.log(photoPosts[item].id + ' ' + photoPosts[item].author + ' ' + photoPosts[item].createdAt + ' ' + photoPosts[item].description + ' ' + photoPosts[item].photoLink);
+                return photoPosts[item];
             }
         }
         return 0;
     }
-    function validatePhotoPost(object) {
-        if(typeof object.id !== 'string' || typeof object.description !== 'string'  || typeof object.photoLink !== 'string'){
-            return false;
-        }
-        if (object.createdAt instanceof Date){
-            return false;
-        }
-        for(var i in object.hashtags){
-            if(typeof object.hashtags[i] !== 'string'){
+    function validatePhotoPost(post) {
+        for (var item in post.hashtags) {
+            if (typeof post.hashtags[item] !== 'string') {
                 return false;
             }
         }
-        if (!object.hasOwnProperty('id')) {
+        if ((!post.hasOwnProperty('id')) || typeof post.id !== 'string') {
             console.log("error1");
             return false;
         }
         else {
-            if (getIndex(object.id) >= 0) {
+            if (getIndex(post.id) >= 0) {
                 return false;
             }
         }
-        if (!object.hasOwnProperty('photoLink')) {
+        if ((!post.hasOwnProperty('photoLink')) || typeof post.photoLink !== 'string') {
             console.log("error2");
             return false;
         }
         else {
-            if (object.photoLink.lenght == 0) {
+            if (post.photoLink.lenght == 0) {
                 return false;
             }
         }
-        if (!object.hasOwnProperty('author')) {
+        if ((!post.hasOwnProperty('author')) || typeof post.author !== 'string') {
             console.log("error3");
             return false;
         }
         else {
-            if (object.author.lenght == 0) {
+            if (post.author.lenght == 0) {
                 return false;
             }
         }
-        if (!object.hasOwnProperty('createdAt')) {
+        if (!post.hasOwnProperty('createdAt')) {
             console.log("error4");
             return false;
         }
-        if (object.hasOwnProperty('description') === false) {
+        else {
+            if (post.createdAt instanceof Date) {
+                return false;
+            }
+        }
+        if ((!post.hasOwnProperty('description')) || typeof post.description !== 'string') {
             console.log("error5");
             return false;
         }
         else {
-            if (object.description.lenght == 0 || object.description.lenght >= 0) {
+            if (post.description.lenght == 0 || post.description.lenght >= 200) {
                 return false;
             }
         }
         return true;
     }
 
-    function addPhotoPost(object) {
-        if (validatePhotoPost(object) == true) {
-            photoPosts.push(object);
+    function addPhotoPost(post) {
+        if (validatePhotoPost(post)) {
+            photoPosts.push(post);
             return true;
         }
         return false;
     }
 
     function getIndex(id) {
-        for (var i in photoPosts) {
-            if (photoPosts[i].id == id) {
-                return i;
+        for (var item in photoPosts) {
+            if (photoPosts[item].id == id) {
+                return item;
             }
         }
         return -1;
     }
 
     function removePhotoPost(id) {
-        var temp = getIndex(id);
-        if (temp >= 0) {
-            photoPosts.splice(temp, 1);
+        if (getIndex(id) >= 0) {
+            photoPosts.splice(getIndex(id), 1);
             return true;
         }
         return false;
     }
 
 
-    function editPhotoPost(id, object) {
-        if (!object) {
+    function editPhotoPost(id, post) {
+        if (!post) {
             return false;
         }
         if (id == undefined) {
             return false;
         }
-        var tempIndex = getIndex(id);
         var temp = 0;
-        if (tempIndex >= 0) {
-            if (object.hasOwnProperty('id')) {
+        if (getIndex(id) >= 0) {
+            if (post.hasOwnProperty('id')) {
                 return false;
             }
-            if (object.hasOwnProperty('createdAt')) {
+            if (post.hasOwnProperty('createdAt')) {
                 return false;
             }
-            if (object.hasOwnProperty('author')) {
+            if (post.hasOwnProperty('author')) {
                 return false;
             }
-            if (object.hasOwnProperty('description')) {
+            if (post.hasOwnProperty('description')) {
                 console.log('description');
-                photoPosts[tempIndex].description = object.description;
+                photoPosts[getIndex(id)].description = post.description;
                 temp = -1;
             }
-            if (object.hasOwnProperty('hashtags')) {
-                photoPosts[tempIndex].hashtags = object.hashtags;
+            if (post.hasOwnProperty('hashtags')) {
+                photoPosts[getIndex(id)].hashtags = post.hashtags;
                 temp = -1;
             }
-            if (object.hasOwnProperty('photoLink')) {
+            if (post.hasOwnProperty('photoLink')) {
                 console.log('link');
-                photoPosts[tempIndex].photoLink = object.photoLink;
+                photoPosts[getIndex(id)].photoLink = post.photoLink;
                 temp = -1;
             }
             if (temp == -1) {
@@ -322,47 +319,29 @@
         return b.createdAt - a.createdAt;
     }
 
-    function getPOstsArray(Array) {
-        for (var i in Array) {
-            console.log(Array[i].id + ' ' + Array[i].author + ' ' + photoPosts[i].createdAt);
-        }
-        return Array;
-    }
-
     function getPhotoPosts(skip, top, filterConfig) {
         skip = skip || 0;
         top = top || 10;
         photoPosts.sort(compareDates);
-        var ArrayObject = photoPosts.slice(0,photoPosts.length);
-        // debugger;
+        var ArrayObject = photoPosts.slice(0, photoPosts.length);
         if (filterConfig == undefined) {
             photoPosts.sort(compareDates);
             ArrayObject = photoPosts.slice(skip, skip + top);
             return ArrayObject;
         }
 
-        if (filterConfig.hasOwnProperty('author') == false) {
-            if (filterConfig.hasOwnProperty('hashtags') == false) {
-                if (filterConfig.hasOwnProperty('data') == false) {
-                    ArrayObject = photoPosts.slice(skip, skip + top);
-                    return ArrayObject;
+        if (filterConfig.hasOwnProperty('author')) {
+            for (var i = ArrayObject.length - 1; i >= 0; i--) {
+                if (ArrayObject[i].author !== filterConfig.author) {
+                    ArrayObject.splice(i, 1);
                 }
             }
         }
 
-        if (filterConfig.hasOwnProperty('author')) {
-            for (var i = ArrayObject.length - 1; i >= 0; i--) {
-                if (ArrayObject[i].author !== filterConfig.author) {
-                    ArrayObject.splice(i,1);
-                }
-            }
-        }
-        
         if (filterConfig.hasOwnProperty('data')) {
-            getPOstsArray(ArrayObject);
             for (var i = ArrayObject.length - 1; i >= 0; i--) {
                 if (ArrayObject[i].createdAt.getTime() !== filterConfig.data.getTime()) {
-                    ArrayObject.splice(i,1);
+                    ArrayObject.splice(i, 1);
                 }
             }
         }
@@ -375,127 +354,51 @@
                         temp = 1;
                     }
                 }
-                if(temp == 1){
-                    ArrayObject.splice(i,1); 
+                if (temp == 1) {
+                    ArrayObject.splice(i, 1);
                 }
             }
 
         }
-        if (ArrayObject.length<= 10 ) {
+        if (ArrayObject.length <= 10) {
             return ArrayObject;
         }
-         return ArrayObject.slice(skip, skip + top);
+        return ArrayObject.slice(skip, skip + top);
 
     }
-
-    console.log(getPhotoPosts(0, 10, { data: new Date('2018-02-23T23:00:00') }));
-    console.log(getPhotoPosts(10, 10, { hashtags: 'hashtag1' }));
-    console.log(getPhotoPosts(0, 10, { author: 'author3' }));
-    editPhotoPost('6', { photoLink: 'http://edit' });
-    getPhotoPost('6');
-    editPhotoPost('5', { description: 'edit' });
-    getPhotoPost('5');
-    editPhotoPost('7', { id: '8' });
-    getPhotoPost('7');
-    addPhotoPost({
-        id: '21',
-        description: 'description21',
-        createdAt: new Date('2018-02-23T21:00:00'),
-        author: 'Author21',
-        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-        hashtags:['hashtag1', 'hashtag8'],
-        likes: ['name21', 'name2', 'name3']
-    });
-    getPhotoPost('21');
-    editPhotoPost('4', { description: 'edit' });
-    removePhotoPost('4');
-    editPhotoPost('1', {hashtags:['hashtag1', 'hashtag8']});
-    getPhotoPost('1');
-
+    return {
+        removePhotoPost: removePhotoPost,
+        editPhotoPost: editPhotoPost,
+        addPhotoPost: addPhotoPost,
+        validatePhotoPost: validatePhotoPost,
+        getPhotoPost: getPhotoPost,
+        getPhotoPosts: getPhotoPosts
+    }
 })();
 
 
+console.log(myModule.getPhotoPosts(0, 10, { data: new Date('2018-02-23T23:00:00') }));
+console.log(myModule.getPhotoPosts(10, 10, { hashtags: 'hashtag1' }));
+console.log(myModule.getPhotoPosts(0, 10, { author: 'author3' }));
+myModule.editPhotoPost('6', { photoLink: 'http://edit' });
+myModule.getPhotoPost('6');
+myModule.editPhotoPost('5', { description: 'edit' });
+myModule.getPhotoPost('5');
+myModule.editPhotoPost('7', { id: '8' });
+myModule.getPhotoPost('7');
+myModule.addPhotoPost({
+    id: '21',
+    description: 'description21',
+    createdAt: new Date('2018-02-23T21:00:00'),
+    author: 'Author21',
+    photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+    hashtags: ['hashtag1', 'hashtag8'],
+    likes: ['name21', 'name2', 'name3']
+});
+myModule.getPhotoPost('21');
+myModule.editPhotoPost('4', { description: 'edit' });
+myModule.removePhotoPost('4');
+myModule.editPhotoPost('1', { hashtags: ['hashtag1', 'hashtag8'] });
+myModule.getPhotoPost('1');
 
 
-
-        // if (filterConfig.hasOwnProperty('author') == false) {
-        //     if (filterConfig.hasOwnProperty('hashtags') == false) {
-        //         if (filterConfig.hasOwnProperty('data') == false) {
-        //             ArrayObject = photoPosts.slice(skip, skip + top);
-        //             return ArrayObject;
-        //         }
-        //         else {
-
-        //             for (var i in photoPosts) {
-        //                 if (photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-        //                     ArrayObject.push(photoPosts[i]);
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     else {
-        //         if (filterConfig.hasOwnProperty('data') == false) {
-        //             for (var i in photoPosts) {
-        //                 for (var j in photoPosts[i].hashtags) {
-        //                     if (photoPosts[i].hashtags[j] == filterConfig.hashtags) {
-        //                         console.log('1234');
-        //                         ArrayObject.push(photoPosts[i]);
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //         else {
-        //             for (var i in photoPosts) {
-        //                 for (var j in photoPosts[i].hashtags) {
-        //                     if (photoPosts[i].hashtags[j] == filterConfig.hashtags && photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-        //                         ArrayObject.push(photoPosts[i]);
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
-        // else {
-        //     if (filterConfig.hasOwnProperty('data') == false) {
-        //         if (filterConfig.hasOwnProperty('hashtags') == false) {
-        //             for (var i in photoPosts) {
-        //                 if (photoPosts[i].author === filterConfig.author) {
-        //                     ArrayObject.push(photoPosts[i]);
-        //                 }
-        //             }
-        //         }
-        //         else {
-        //             for (var i in photoPosts) {
-        //                 if (photoPosts[i].author === filterConfig.author) {
-        //                     for (var j in photoPosts[i].hashtags) {
-        //                         if (photoPosts[i].hashtags[j] == filterConfig.hashtags)
-        //                             ArrayObject.push(photoPosts[i]);
-        //                     }
-        //                 }
-        //             }
-
-        //         }
-        //     }
-        //     else {
-        //         if (filterConfig.hasOwnProperty('hashtags') == false) {
-        //             for (var i in photoPosts) {
-        //                 if (photoPosts[i].author === filterConfig.author && photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-        //                     ArrayObject.push(photoPosts[i]);
-        //                 }
-        //             }
-        //         }
-        //         else {
-        //             for (var i in photoPosts) {
-        //                 if (photoPosts[i].createdAt.getTime() === filterConfig.data.getTime()) {
-
-        //                     if (photoPosts[i].author === filterConfig.author) {
-        //                         for (var j in photoPosts[i].hashtags) {
-        //                             if (photoPosts[i].hashtags[j] == filterConfig.hashtags)
-        //                                 ArrayObject.push(photoPosts[i]);
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-
-        //     }
