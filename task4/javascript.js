@@ -397,3 +397,5 @@ myModule.editPhotoPost('4', { description: 'edit' });
 myModule.removePhotoPost('4');
 myModule.editPhotoPost('1', { hashtags: ['hashtag1', 'hashtag8'] });
 console.log(myModule.getPhotoPost('1'));
+debugger;
+myModule.editPhotoPost({description :' '} , { description: 'edut'});
