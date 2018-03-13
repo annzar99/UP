@@ -1,203 +1,199 @@
+var photoPosts = [
+    {
+        id: '1',
+        description: 'description1',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author1',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag7', 'hashtag5', 'hashtag3', 'hashtag4'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '2',
+        description: 'description2',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author2',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag2', 'hashtag3'],
+        likes: ['name3', 'name2', 'name5']
+    },
+    {
+        id: '3',
+        description: 'description3',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author2',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag6'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '4',
+        description: 'description4',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author4',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag9', 'hashtag2'],
+        likes: ['name4', 'name5', 'name7']
+    },
+    {
+        id: '5',
+        description: 'description5',
+        createdAt: new Date('2018-01-23T23:00:00'),
+        author: 'Author5',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '6',
+        description: 'description6',
+        createdAt: new Date('2018-02-23T23:40:00'),
+        author: 'Author6',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag8'],
+        likes: ['name7', 'name2', 'name3']
+    },
+    {
+        id: '7',
+        description: 'description3',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author7',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag10', 'hashtag2'],
+        likes: ['name10', 'name2', 'name3']
+    },
+    {
+        id: '8',
+        description: 'description8',
+        createdAt: new Date('2018-02-22T23:00:00'),
+        author: 'Author8',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag4'],
+        likes: ['name1', 'name4', 'name3']
+    },
+    {
+        id: '9',
+        description: 'description9',
+        createdAt: new Date('2018-01-23T23:00:00'),
+        author: 'Author9',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '10',
+        description: 'description10',
+        createdAt: new Date('2018-02-23T23:08:00'),
+        author: 'Author10',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '11',
+        description: 'description11',
+        createdAt: new Date('2018-02-23T23:00:10'),
+        author: 'Author11',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '12',
+        description: 'description12',
+        createdAt: new Date('2017-02-23T23:00:00'),
+        author: 'Author12',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag2'],
+        likes: ['name1', 'name12', 'name3']
+    },
+    {
+        id: '13',
+        description: 'description13',
+        createdAt: new Date('2018-01-23T23:00:00'),
+        author: 'Author13',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2', 'hashtag3', 'hashtag4'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '14',
+        description: 'description14',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author14',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag5', 'hashtag2', 'hashtag3', 'hashtag4'],
+        likes: ['name1', 'name4', 'name3']
+    },
+    {
+        id: '15',
+        description: 'description15',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author15',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag5', 'hashtag3', 'hashtag6'],
+        likes: ['name6', 'name2', 'name3']
+    },
+    {
+        id: '16',
+        description: 'description16',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author16',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag4', 'hashtag2', 'hashtag7', 'hashtag8'],
+        likes: ['name7', 'name2', 'name3']
+    },
+    {
+        id: '17',
+        description: 'description17',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author17',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2', 'hashtag3', 'hashtag4'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '18',
+        description: 'description18',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author18',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag1', 'hashtag2', 'hashtag3', 'hashtag4'],
+        likes: ['name1', 'name2', 'name3']
+    },
+    {
+        id: '19',
+        description: 'description19',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author19',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag5', 'hashtag2', 'hashtag3', 'hashtag4'],
+        likes: ['name5', 'name2', 'name3']
+    },
+    {
+        id: '20',
+        description: 'description20',
+        createdAt: new Date('2018-02-23T23:00:00'),
+        author: 'Author20',
+        photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
+        hashtags: ['hashtag7', 'hashtag5', 'hashtag3', 'hashtag4'],
+        likes: ['name10', 'name2', 'name3']
+    },
+];
+
+
+
 var myModule = (function () {
 
-    var photoPosts = [
-        {
-            id: '1',
-            description: 'description1',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author1',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag7', 'hashtag5', 'hashtag3', 'hashtag4'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '2',
-            description: 'description2',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author2',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag2', 'hashtag3'],
-            likes: ['name3', 'name2', 'name5']
-        },
-        {
-            id: '3',
-            description: 'description3',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author2',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag6'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '4',
-            description: 'description4',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author4',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag9', 'hashtag2'],
-            likes: ['name4', 'name5', 'name7']
-        },
-        {
-            id: '5',
-            description: 'description5',
-            createdAt: new Date('2018-01-23T23:00:00'),
-            author: 'Author5',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '6',
-            description: 'description6',
-            createdAt: new Date('2018-02-23T23:40:00'),
-            author: 'Author6',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag8'],
-            likes: ['name7', 'name2', 'name3']
-        },
-        {
-            id: '7',
-            description: 'description3',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author7',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag10', 'hashtag2'],
-            likes: ['name10', 'name2', 'name3']
-        },
-        {
-            id: '8',
-            description: 'description8',
-            createdAt: new Date('2018-02-22T23:00:00'),
-            author: 'Author8',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag4'],
-            likes: ['name1', 'name4', 'name3']
-        },
-        {
-            id: '9',
-            description: 'description9',
-            createdAt: new Date('2018-01-23T23:00:00'),
-            author: 'Author9',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '10',
-            description: 'description10',
-            createdAt: new Date('2018-02-23T23:08:00'),
-            author: 'Author10',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '11',
-            description: 'description11',
-            createdAt: new Date('2018-02-23T23:00:10'),
-            author: 'Author11',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '12',
-            description: 'description12',
-            createdAt: new Date('2017-02-23T23:00:00'),
-            author: 'Author12',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag2'],
-            likes: ['name1', 'name12', 'name3']
-        },
-        {
-            id: '13',
-            description: 'description13',
-            createdAt: new Date('2018-01-23T23:00:00'),
-            author: 'Author13',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2', 'hashtag3', 'hashtag4'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '14',
-            description: 'description14',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author14',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag5', 'hashtag2', 'hashtag3', 'hashtag4'],
-            likes: ['name1', 'name4', 'name3']
-        },
-        {
-            id: '15',
-            description: 'description15',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author15',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag5', 'hashtag3', 'hashtag6'],
-            likes: ['name6', 'name2', 'name3']
-        },
-        {
-            id: '16',
-            description: 'description16',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author16',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag4', 'hashtag2', 'hashtag7', 'hashtag8'],
-            likes: ['name7', 'name2', 'name3']
-        },
-        {
-            id: '17',
-            description: 'description17',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author17',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2', 'hashtag3', 'hashtag4'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '18',
-            description: 'description18',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author18',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag1', 'hashtag2', 'hashtag3', 'hashtag4'],
-            likes: ['name1', 'name2', 'name3']
-        },
-        {
-            id: '19',
-            description: 'description19',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author19',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag5', 'hashtag2', 'hashtag3', 'hashtag4'],
-            likes: ['name5', 'name2', 'name3']
-        },
-        {
-            id: '20',
-            description: 'description20',
-            createdAt: new Date('2018-02-23T23:00:00'),
-            author: 'Author20',
-            photoLink: 'http://ont.by/webroot/delivery/files/news/2018/02/22/Dom.jpg',
-            hashtags: ['hashtag7', 'hashtag5', 'hashtag3', 'hashtag4'],
-            likes: ['name10', 'name2', 'name3']
-        },
-    ];
-
     function getPhotoPost(temp) {
-        for (var item in photoPosts) {
-            if (photoPosts[item].id == temp) {
-                for (var itemHashtag in photoPosts[item].hashtags) {
-                    console.log(photoPosts[item].hashtags[itemHashtag] + ' ')
-                }
-                console.log(photoPosts[item].id + ' ' + photoPosts[item].author + ' ' + photoPosts[item].createdAt + ' ' + photoPosts[item].description + ' ' + photoPosts[item].photoLink);
-                return photoPosts[item];
-            }
-        }
-        return 0;
+        return photoPosts.find(function (element){
+            return element.id == temp;
+        });
     }
+
     function validatePhotoPost(post) {
-        for (var item in post.hashtags) {
-            if (typeof post.hashtags[item] !== 'string') {
+        for (var i in post.hashtags) {
+            if (typeof post.hashtags[i] !== 'string') {
                 return false;
             }
         }
@@ -206,7 +202,9 @@ var myModule = (function () {
             return false;
         }
         else {
-            if (getIndex(post.id) >= 0) {
+            if (photoPosts.findIndex(function (element){
+                    return element.id == post.id;
+                }) >= 0) {
                 return false;
             }
         }
@@ -233,7 +231,7 @@ var myModule = (function () {
             return false;
         }
         else {
-            if (post.createdAt instanceof Date) {
+            if (!post.createdAt instanceof Date) {
                 return false;
             }
         }
@@ -257,18 +255,12 @@ var myModule = (function () {
         return false;
     }
 
-    function getIndex(id) {
-        for (var item in photoPosts) {
-            if (photoPosts[item].id == id) {
-                return item;
-            }
-        }
-        return -1;
-    }
-
     function removePhotoPost(id) {
-        if (getIndex(id) >= 0) {
-            photoPosts.splice(getIndex(id), 1);
+        var index = photoPosts.findIndex(function(element){
+            return element.id == id;
+        });
+        if (index >= 0) {
+            photoPosts.splice(index, 1);
             return true;
         }
         return false;
@@ -279,11 +271,14 @@ var myModule = (function () {
         if (!post) {
             return false;
         }
-        if (id == undefined) {
+        if (typeof id !== 'string' || id.length == 0) {
             return false;
         }
         var temp = 0;
-        if (getIndex(id) >= 0) {
+        var index = photoPosts.findIndex(function (element){
+            return element.id == id;
+        });
+        if (index >= 0) {
             if (post.hasOwnProperty('id')) {
                 return false;
             }
@@ -295,16 +290,16 @@ var myModule = (function () {
             }
             if (post.hasOwnProperty('description')) {
                 console.log('description');
-                photoPosts[getIndex(id)].description = post.description;
+                photoPosts[index].description = post.description;
                 temp = -1;
             }
             if (post.hasOwnProperty('hashtags')) {
-                photoPosts[getIndex(id)].hashtags = post.hashtags;
+                photoPosts[index].hashtags = post.hashtags;
                 temp = -1;
             }
             if (post.hasOwnProperty('photoLink')) {
                 console.log('link');
-                photoPosts[getIndex(id)].photoLink = post.photoLink;
+                photoPosts[index].photoLink = post.photoLink;
                 temp = -1;
             }
             if (temp == -1) {
@@ -380,12 +375,13 @@ var myModule = (function () {
 console.log(myModule.getPhotoPosts(0, 10, { data: new Date('2018-02-23T23:00:00') }));
 console.log(myModule.getPhotoPosts(10, 10, { hashtags: 'hashtag1' }));
 console.log(myModule.getPhotoPosts(0, 10, { author: 'author3' }));
+console.log(myModule.getPhotoPosts());
 myModule.editPhotoPost('6', { photoLink: 'http://edit' });
-myModule.getPhotoPost('6');
+console.log(myModule.getPhotoPost('6'));
 myModule.editPhotoPost('5', { description: 'edit' });
-myModule.getPhotoPost('5');
+console.log(myModule.getPhotoPost('5'));
 myModule.editPhotoPost('7', { id: '8' });
-myModule.getPhotoPost('7');
+console.log(myModule.getPhotoPost('7'));
 myModule.addPhotoPost({
     id: '21',
     description: 'description21',
@@ -395,10 +391,9 @@ myModule.addPhotoPost({
     hashtags: ['hashtag1', 'hashtag8'],
     likes: ['name21', 'name2', 'name3']
 });
-myModule.getPhotoPost('21');
+console.log(photoPosts);
+console.log(myModule.getPhotoPost('21'));
 myModule.editPhotoPost('4', { description: 'edit' });
 myModule.removePhotoPost('4');
 myModule.editPhotoPost('1', { hashtags: ['hashtag1', 'hashtag8'] });
-myModule.getPhotoPost('1');
-
-
+console.log(myModule.getPhotoPost('1'));
