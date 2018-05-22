@@ -184,6 +184,7 @@
 //var username = "Author20";
 var username = null;
 var id = 21;
+var pagination = 10;
 
 var moduleEventsHome = (function () {
 
@@ -235,6 +236,10 @@ var moduleEventsHome = (function () {
         }
     }
 
+    function setPagination(){
+        pagination = 10;
+    }
+
 
     function getLike(post, user) {
         if(post.likes.length == 0){
@@ -268,15 +273,30 @@ var moduleEventsHome = (function () {
 
     function events() {
 
+        document.getElementById('download').addEventListener('click',(event)=>{
+            if(document.getElementById('MyPageTitle').textContent === 'Лента')
+            {
+            myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, pagination, 10);
+            }else{
+                myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, pagination, 10,{author: username});
+            }
+            pagination = pagination + 10;
+            event.preventDefault();
+        });
+
         document.getElementById('lenta').addEventListener('click', (event) =>{
             myModule.changeTitle();
             myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10);
+           
+            setPagination();
             event.preventDefault();
         });
 
         document.getElementById('my_page').addEventListener('click', (event) =>{
             myModule.changeTitletoMyPage();
+            // debugger;
             myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10, {author: username});
+            setPagination();
             event.preventDefault();
         });
 
@@ -284,6 +304,7 @@ var moduleEventsHome = (function () {
             if(username !== null){
             myModule.changeTitletoMyPage();
             myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10, {author: username});
+            setPagination();
             event.preventDefault();
         }
             else
@@ -295,6 +316,7 @@ var moduleEventsHome = (function () {
         document.getElementById('TopUser').addEventListener('click', (event) =>{
             myModule.changeTitletoMyPage();
             myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10, {author: username});
+            setPagination();
             event.preventDefault();
         });
 
@@ -318,6 +340,7 @@ var moduleEventsHome = (function () {
                             
                             myModule.displayUser(username);
                             myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10);
+                            setPagination();
                             myModule.deleteRegistration();
                             myModule.setAvatar(getAvatar(username));
                             event.preventDefault();
@@ -333,6 +356,7 @@ var moduleEventsHome = (function () {
                 username = null;
                 myModule.displayUser(username);
                 myModule.getPhotoPosts( JSON.parse(localStorage.getItem('posts')), username, 0, 10);
+                setPagination();
                 event.preventDefault();
             }
         });
@@ -349,6 +373,7 @@ var moduleEventsHome = (function () {
                 createdAt: date,
                 hashtags: hashTag
             });
+            setPagination();
             event.preventDefault();
         }
         else{
@@ -357,7 +382,7 @@ var moduleEventsHome = (function () {
         }
         });
 
-        document.getElementById('Add').addEventListener('click', (event) => {
+        document.getElementById('Add').addEventListener('click', (event) => { 
             
             myModule.addPhotoPostHtml();
             event.preventDefault();
@@ -367,6 +392,24 @@ var moduleEventsHome = (function () {
             var addHashtag = document.editForm.newHashtag.value;
             myModule.deleteEditForm();
             var min = new Date();
+
+          /*  fetch('addPost', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    description: 'description19',
+                    author: 'Author1',
+                    photoLink: 'http://www.bestrockpics.com/data/media/152/Within%20Temptation%20wallpaper%20(5).jpg',
+                    hashtags: ['#hashtag5', '#hashtag2', '#hashtag3', '#hashtag4'],
+                    likes: ['name5', 'name2', 'name3' , 'Author20']
+                })
+            }).then((res) => {
+                console.log('Success', res.body);
+            })*/
+
             var editPosts = myModule.addPhotoPost(JSON.parse(localStorage.getItem('posts')),username, {
                         author: username,
                         createdAt: `${min.toISOString()}`,
@@ -376,7 +419,7 @@ var moduleEventsHome = (function () {
                         id: `${id}`,
                         likes: []
                     }); 
-                    if(editPosts.length == id){
+                    if(editPosts.length == id) {
                         id = id + 1;
                     }
                     localStorage.setItem('posts', JSON.stringify(editPosts));
@@ -397,8 +440,10 @@ var moduleEventsHome = (function () {
                 if(name === username){
                 myModule.changeTitletoMyPage();
                  myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10, {author: username});
+                 setPagination();
                 }else{
                     myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10, {author: name});
+                    setPagination();
                 }
                  event.preventDefault();
             }
@@ -436,6 +481,7 @@ var moduleEventsHome = (function () {
                 localStorage.setItem('posts', JSON.stringify(photo));
                 myModule.changeTitletoMyPage();
                 myModule.getPhotoPosts(JSON.parse(localStorage.getItem('posts')), username, 0, 10, {author: username});
+                setPagination();
                 event.preventDefault();
              });
              document.getElementById('no').addEventListener('click', (event) => {

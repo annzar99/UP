@@ -401,10 +401,9 @@ registration_form{
     margin-left: 8vw;
 }
 
-#article_information{
+.article_information{
     display: inline-block;
     align-self: center;
-
 }
 
 .HashTeg{

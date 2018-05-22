@@ -170,7 +170,7 @@ var myModule = (function () {
         newPost.className = 'post';
         newPost.setAttribute('data-id', post.id);
         // debugger;
-        newPost.innerHTML = `<div id = "article_information"><img src="if_Account_2190989.ico" class="ava"/>
+        newPost.innerHTML = `<div class = "article_information"><img src="if_Account_2190989.ico" class="ava"/>
         <a href="" title="user_name"> 
         <span class="user_name1">${post.author}</span></a>
         <span class = "Data_and_time">${data.toLocaleString()}</span></div>
@@ -195,7 +195,7 @@ var myModule = (function () {
         var newPost = document.createElement('article');
         newPost.className = 'post';
         newPost.setAttribute('data-id', post.id);
-        newPost.innerHTML = `<div id = "article_information"><img src="if_Account_2190989.ico" class="ava"/>
+        newPost.innerHTML = `<div class = "article_information"><img src="if_Account_2190989.ico" class="ava"/>
         <a href="" title="user_name"> 
         <span class="user_name1">${post.author}</span></a>
         <span class = "Data_and_time">${data.toLocaleString()}</span></div>
@@ -215,7 +215,7 @@ var myModule = (function () {
         var newPost = document.createElement('article');
         newPost.className = 'post';
         newPost.setAttribute('data-id', post.id);
-        newPost.innerHTML = `<div id = "article_information"><img src="if_Account_2190989.ico" class="ava"/>
+        newPost.innerHTML = `<div class = "article_information"><img src="if_Account_2190989.ico" class="ava"/>
         <a href="" title="user_name"> 
         <span class="user_name1">${post.author}</span></a>
         <span class = "Data_and_time">${data.toLocaleString()}</span></div>
@@ -374,10 +374,11 @@ var myModule = (function () {
     }
 
     function compareDates(a, b) {
-        return new Date(a.createdAt) - new Date(b.createdAt);
+        return new Date(b.createdAt) - new Date(a.createdAt);
     }
 
     function getPhotoPosts(photoPosts, user, skip, top, filterConfig) {
+     //   debugger;
         var index = document.getElementsByClassName('post').length;
         var showDowloadButton = document.getElementById('DownloadButton').className = '';
         for (var i = index - 1; i >= 0; i--) {
@@ -389,10 +390,9 @@ var myModule = (function () {
         top = top || 10;
         photoPosts.sort(compareDates);
         var postsToDisplay = photoPosts.slice(0, photoPosts.length);
-        var getIndexToDeisplay = photoPosts.length - skip - top;
         if (filterConfig == undefined) {
-            postsToDisplay = photoPosts.slice(getIndexToDeisplay,getIndexToDeisplay + top);
-            for (var i in postsToDisplay) {
+            postsToDisplay = photoPosts.slice(skip,skip + top);
+            for (var i  = postsToDisplay.length - 1; i >=0; i--) {
                 if (user !== null) {
                     if (user !== postsToDisplay[i].author) {
                         displayWithoutDelete(postsToDisplay[i], photoPosts, user);
@@ -405,10 +405,11 @@ var myModule = (function () {
                     displayPhotoPost(postsToDisplay[i], photoPosts, user);
                 }
             }
+            if(postsToDisplay.length < 10){
+                document.getElementById('DownloadButton').className = 'hide';
+            }
             return postsToDisplay;
         }
-
-        debugger;
 
         if (filterConfig.hasOwnProperty('author') && (filterConfig.author.length != 0)) {
             for (var i = postsToDisplay.length - 1; i >= 0; i--) {
@@ -447,7 +448,7 @@ var myModule = (function () {
             getPhotoPosts(photoPosts, user, 0, 10);
         }
         if (postsToDisplay.length <= 10) {
-            for (var i in postsToDisplay) {
+            for (var i= postsToDisplay.length - 1; i >= 0; i--) {
                 if (user !== null) {
                     if (user !== postsToDisplay[i].author) {
                         displayWithoutDelete(postsToDisplay[i], photoPosts, user);
@@ -461,12 +462,10 @@ var myModule = (function () {
                 }
             }
             var temp = document.getElementById('DownloadButton').className = 'hide';
-
             return postsToDisplay;
         }
-        getIndexToDeisplay = postsToDisplay.length - skip - top;
-        var display = postsToDisplay.slice(getIndexToDeisplay,getIndexToDeisplay + top);
-        for (var i in display) {
+        var display = postsToDisplay.slice(skip,skip + top);
+        for (var i = display.length - 1; i>= 0; i--) {
             if (user !== null) {
                 if (user !== display[i].author) {
                     displayWithoutDelete(display[i], photoPosts, user)
@@ -479,8 +478,10 @@ var myModule = (function () {
                 displayPhotoPost(display[i], photoPosts, user);
             }
         }
+        if(display.length < 10){
+            document.getElementById('DownloadButton').className = 'hide';
+        }
         return display;
-
     }
     return {
         removePhotoPost: removePhotoPost,
