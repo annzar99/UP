@@ -1,0 +1,44 @@
+[
+    {
+        "id": "3",
+        "description": "description3",
+        "createdAt": "new Date('2018-05-21T23:00:00')",
+        "author": "Author3",
+        "photoLink": "https://pp.userapi.com/c631618/v631618470/5cb8/Yeimzk45RJE.jpg",
+        "hashtags": [
+            "hashtag1",
+            "hashtag5"
+        ],
+        "likes": [
+            "Author2"
+        ]
+    },
+    {
+        "id": "1",
+        "description": "description1",
+        "createdAt": "new Date('2018-05-21T23:00:00')",
+        "author": "Author20",
+        "photoLink": "http://www.hitkiller.com/666/wp-content/uploads/2014/03/within-temptation-twitter.jpg",
+        "hashtags": [
+            "hashtag1",
+            "hashtag5"
+        ],
+        "likes": [
+            "Author2"
+        ]
+    },
+    {
+        "id": "6",
+        "description": "description153",
+        "createdAt": "new Date('2018-05-21T23:00:00')",
+        "author": "Author3",
+        "photoLink": "http://www.bugaga.ru/uploads/posts/2011-02/1296652853_wt.jpg",
+        "hashtags": [
+            "hashtag2",
+            "hashtag5"
+        ],
+        "likes": [
+            "Author2"
+        ]
+    }
+]
